@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BioFlow971 — Cultivez chez vous en Guadeloupe</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fff; color: #1a1a1a; }
+    a { text-decoration: none; }
+
+    .hero { background: linear-gradient(135deg, #1D9E75 0%, #0F6E56 100%); padding: 3rem 1.5rem; text-align: center; }
+    .logo-area { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 1.5rem; }
+    .logo-circle { width: 52px; height: 52px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 26px; }
+    .logo-text { font-size: 24px; font-weight: 600; color: #fff; }
+    .hero-badge { display: inline-block; background: rgba(255,255,255,0.2); color: #fff; font-size: 12px; padding: 4px 14px; border-radius: 20px; margin-bottom: 1rem; }
+    .hero h1 { font-size: 28px; font-weight: 600; color: #fff; margin-bottom: 0.75rem; line-height: 1.3; }
+    .hero p { font-size: 15px; color: rgba(255,255,255,0.88); max-width: 400px; margin: 0 auto 1.75rem; line-height: 1.65; }
+    .hero-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
+    .btn-primary { background: #fff; color: #0F6E56; padding: 11px 24px; border-radius: 8px; font-size: 14px; font-weight: 600; display: inline-block; }
+    .btn-secondary { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.6); padding: 11px 24px; border-radius: 8px; font-size: 14px; display: inline-block; }
+    .stats-row { display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
+    .stat { text-align: center; }
+    .stat-num { font-size: 22px; font-weight: 700; color: #fff; }
+    .stat-label { font-size: 11px; color: rgba(255,255,255,0.72); margin-top: 2px; }
+
+    .section { padding: 2.5rem 1.5rem; max-width: 600px; margin: 0 auto; }
+    .section-title { font-size: 20px; font-weight: 600; color: #1a1a1a; margin-bottom: 6px; }
+    .section-sub { font-size: 14px; color: #666; margin-bottom: 1.5rem; line-height: 1.65; }
+
+    .why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .why-card { background: #f5f5f3; border-radius: 10px; padding: 1rem; }
+    .why-icon { font-size: 22px; margin-bottom: 6px; }
+    .why-title { font-size: 13px; font-weight: 600; color: #1a1a1a; margin-bottom: 4px; }
+    .why-desc { font-size: 12px; color: #666; line-height: 1.5; }
+
+    .divider { height: 1px; background: #eee; margin: 0 1.5rem; }
+
+    .product-card { border: 1px solid #e8e8e8; border-radius: 14px; overflow: hidden; }
+    .product-img { background: #E1F5EE; height: 200px; display: flex; align-items: center; justify-content: center; position: relative; }
+    .product-img img { width: 100%; height: 100%; object-fit: cover; }
+    .product-img-placeholder { text-align: center; }
+    .product-img-placeholder p { font-size: 12px; color: #0F6E56; margin-top: 8px; }
+    .launch-badge { position: absolute; top: 12px; right: 12px; background: #D85A30; color: #fff; font-size: 11px; font-weight: 600; padding: 4px 12px; border-radius: 20px; }
+    .product-body { padding: 1.5rem; }
+    .product-name { font-size: 18px; font-weight: 600; color: #1a1a1a; margin-bottom: 8px; }
+    .product-desc { font-size: 13px; color: #666; line-height: 1.65; margin-bottom: 1.25rem; }
+    .price-row { display: flex; align-items: center; gap: 10px; margin-bottom: 1.25rem; flex-wrap: wrap; }
+    .price-launch { font-size: 26px; font-weight: 700; color: #0F6E56; }
+    .price-normal { font-size: 15px; color: #999; text-decoration: line-through; }
+    .price-label { font-size: 11px; background: #E1F5EE; color: #0F6E56; padding: 3px 10px; border-radius: 6px; font-weight: 600; }
+    .includes-title { font-size: 11px; font-weight: 600; color: #999; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
+    .include-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: #1a1a1a; padding: 5px 0; }
+    .check { width: 18px; height: 18px; border-radius: 50%; background: #E1F5EE; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+
+    .contact-section { background: #f5f5f3; border-radius: 12px; padding: 1.5rem; text-align: center; margin-top: 1.5rem; }
+    .contact-title { font-size: 16px; font-weight: 600; color: #1a1a1a; margin-bottom: 6px; }
+    .contact-sub { font-size: 13px; color: #666; margin-bottom: 1.25rem; line-height: 1.5; }
+    .contact-btns { display: flex; flex-direction: column; gap: 10px; }
+    .btn-wa { background: #25D366; color: #fff; padding: 13px; border-radius: 10px; font-size: 14px; font-weight: 600; display: block; }
+    .btn-ig { background: transparent; color: #1a1a1a; border: 1px solid #ddd; padding: 13px; border-radius: 10px; font-size: 14px; display: block; }
+
+    .footer { padding: 2rem 1.5rem; text-align: center; border-top: 1px solid #eee; margin-top: 1rem; }
+    .footer p { font-size: 12px; color: #999; line-height: 1.8; }
+
+    @media (max-width: 400px) {
+      .hero h1 { font-size: 22px; }
+      .stats-row { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="logo-area">
+    <div class="logo-circle">🌿</div>
+    <span class="logo-text">BioFlow</span>
+  </div>
+  <div class="hero-badge">🇬🇵 Guadeloupe</div>
+  <h1>Cultivez vos légumes chez vous, sans jardin</h1>
+  <p>Des systèmes hydroponiques éco-responsables, conçus pour les appartements en Guadeloupe. Frais, local, toute l'année.</p>
+  <div class="hero-btns">
+    <a href="#produit" class="btn-primary">Voir le kit</a>
+    <a href="#contact" class="btn-secondary">Nous contacter</a>
+  </div>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-num">60 cm²</div><div class="stat-label">Espace nécessaire</div></div>
+    <div class="stat"><div class="stat-num">30 j</div><div class="stat-label">1ère récolte</div></div>
+    <div class="stat"><div class="stat-num">0</div><div class="stat-label">Terre requise</div></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">Pourquoi l'hydroponie en Guadeloupe ?</div>
+  <div class="section-sub">Les légumes frais coûtent cher et viennent souvent de loin. Avec BioFlow, produisez chez vous, toute l'année.</div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon">🌡️</div>
+      <div class="why-title">Climat idéal</div>
+      <div class="why-desc">Notre chaleur et lumière naturelle accélèrent la pousse</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">💧</div>
+      <div class="why-title">90% moins d'eau</div>
+      <div class="why-desc">Par rapport au jardinage traditionnel</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🏠</div>
+      <div class="why-title">Sans jardin</div>
+      <div class="why-desc">Idéal pour appartement, balcon ou cuisine</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🥬</div>
+      <div class="why-title">Frais & local</div>
+      <div class="why-desc">Récoltez à la demande, sans pesticides</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section" id="produit">
+  <div class="section-title">Notre produit</div>
+  <div class="section-sub">Un seul kit pour démarrer simplement.</div>
+  <div class="product-card">
+    <div class="product-img">
+      <!-- Remplace le bloc ci-dessous par : <img src="ta-photo.jpg" alt="Kit BioFlow" /> -->
+      <div class="product-img-placeholder">
+        <div style="font-size: 52px;">🌿</div>
+        <p>Ajoute ta photo ici</p>
+      </div>
+      <div class="launch-badge">Offre lancement</div>
+    </div>
+    <div class="product-body">
+      <div class="product-name">Kit Découverte BioFlow</div>
+      <div class="product-desc">Votre tour hydroponique complète pour cultiver vos aromates et herbes fraîches chez vous. Installation simple, résultats rapides. Idéal pour débuter sans aucune expérience.</div>
+      <div class="price-row">
+        <span class="price-launch">350 €</span>
+        <span class="price-normal">380 €</span>
+        <span class="price-label">Prix lancement</span>
+      </div>
+      <div class="includes-title">Le kit comprend</div>
+      <div class="include-item">
+        <div class="check"><svg width="10" height="10" viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3" fill="none" stroke="#0F6E56" stroke-width="1.8"/></svg></div>
+        Tour hydroponique complète
+      </div>
+      <div class="include-item">
+        <div class="check"><svg width="10" height="10" viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3" fill="none" stroke="#0F6E56" stroke-width="1.8"/></svg></div>
+        Substrat et semences inclus
+      </div>
+      <div class="include-item">
+        <div class="check"><svg width="10" height="10" viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3" fill="none" stroke="#0F6E56" stroke-width="1.8"/></svg></div>
+        Guide de démarrage pas à pas
+      </div>
+      <div class="include-item">
+        <div class="check"><svg width="10" height="10" viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3" fill="none" stroke="#0F6E56" stroke-width="1.8"/></svg></div>
+        Support BioFlow inclus
+      </div>
+
+      <div class="contact-section" id="contact">
+        <div class="contact-title">Commandez votre kit</div>
+        <div class="contact-sub">Livraison en Guadeloupe. Stock limité pour le lancement.</div>
+        <div class="contact-btns">
+          <a href="https://wa.me/590XXXXXXXX" class="btn-wa">📱 Commander via WhatsApp</a>
+          <a href="https://instagram.com/bioflow971" class="btn-ig">📸 Nous suivre sur Instagram</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>🌿 BioFlow971</p>
+  <p>Systèmes hydroponiques & aquaponiques éco-responsables</p>
+  <p>Guadeloupe 🇬🇵</p>
+</div>
+
+</body>
+</html>
