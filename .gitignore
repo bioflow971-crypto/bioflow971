@@ -1,0 +1,8 @@
+# Keep product photo binaries out of commits for extraction workflows
+images/*.png
+images/*.jpg
+images/*.jpeg
+images/*.webp
+images/*.gif
+!images/.gitkeep
+!images/README.md
