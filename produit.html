@@ -34,7 +34,7 @@
       <div class="container">
         <article class="product-wrap">
           <div class="product-media photo-main">
-            <img src="images/kit-principal.png" alt="Kit Découverte BioFlow installé" class="product-photo" onerror="fallbackImage(this, 'image/kit-principal.png')" />
+            <img src="logo.png" data-photo="kit-principal" alt="Kit Découverte BioFlow installé" class="product-photo js-kit-photo" />
             <span class="badge">Offre lancement</span>
           </div>
 
@@ -55,13 +55,13 @@
 
             <div class="gallery-grid">
               <figure class="gallery-item">
-                <img src="images/kit-1.png" alt="Vue avant du kit BioFlow" loading="lazy" onerror="fallbackImage(this, 'image/kit-1.png')" />
+                <img src="logo.png" data-photo="kit-1" alt="Vue avant du kit BioFlow" loading="lazy" class="js-kit-photo" />
               </figure>
               <figure class="gallery-item">
-                <img src="images/kit-2.png" alt="Vue latérale du kit BioFlow" loading="lazy" onerror="fallbackImage(this, 'image/kit-2.png')" />
+                <img src="logo.png" data-photo="kit-2" alt="Vue latérale du kit BioFlow" loading="lazy" class="js-kit-photo" />
               </figure>
               <figure class="gallery-item">
-                <img src="images/kit-3.png" alt="Détail des plantations du kit BioFlow" loading="lazy" onerror="fallbackImage(this, 'image/kit-3.png')" />
+                <img src="logo.png" data-photo="kit-3" alt="Détail des plantations du kit BioFlow" loading="lazy" class="js-kit-photo" />
               </figure>
             </div>
 
@@ -86,15 +86,37 @@
   </footer>
 
   <script>
-    function fallbackImage(img, secondaryPath) {
-      if (!img.dataset.fallbackTried) {
-        img.dataset.fallbackTried = '1';
-        img.src = secondaryPath;
-        return;
+    (function loadKitPhotos() {
+      const folders = ['images', 'image'];
+      const extensions = ['png', 'jpg', 'jpeg', 'webp'];
+
+      function tryPaths(img, paths, index) {
+        if (index >= paths.length) {
+          img.src = 'logo.png';
+          return;
+        }
+        const candidate = paths[index];
+        const probe = new Image();
+        probe.onload = function () {
+          img.src = candidate;
+        };
+        probe.onerror = function () {
+          tryPaths(img, paths, index + 1);
+        };
+        probe.src = candidate;
       }
-      img.onerror = null;
-      img.src = 'logo.png';
-    }
+
+      document.querySelectorAll('.js-kit-photo').forEach(function (img) {
+        const baseName = img.dataset.photo;
+        const candidates = [];
+        folders.forEach(function (folder) {
+          extensions.forEach(function (ext) {
+            candidates.push(folder + '/' + baseName + '.' + ext);
+          });
+        });
+        tryPaths(img, candidates, 0);
+      });
+    })();
   </script>
 
 </body>

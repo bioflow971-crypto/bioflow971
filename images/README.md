@@ -11,6 +11,9 @@ Placez vos photos dans ce dossier avec ces noms :
 - `kit-2.png`
 - `kit-3.png`
 
-La page `produit.html` est déjà configurée pour les afficher automatiquement.
+La page `produit.html` est configurée pour les afficher automatiquement en cherchant, dans l'ordre :
 
-> Si vous utilisez un autre nom de dossier (`image/`), la page contient aussi un fallback simple.
+1. dossier `images/`
+2. dossier `image/`
+
+Pour chaque nom, les extensions suivantes sont testées : `.png`, `.jpg`, `.jpeg`, `.webp`.

@@ -4,5 +4,10 @@ images/*.jpg
 images/*.jpeg
 images/*.webp
 images/*.gif
+image/*.png
+image/*.jpg
+image/*.jpeg
+image/*.webp
+image/*.gif
 !images/.gitkeep
 !images/README.md
