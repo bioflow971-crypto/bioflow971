@@ -3,353 +3,173 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kit Découverte BioFlow</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #f7f7f5;
-      color: #1a1a1a;
-      line-height: 1.6;
-    }
-    a { text-decoration: none; }
-
-    .page {
-      min-height: 100vh;
-      padding: 2rem 1.25rem 3rem;
-    }
-
-    .container {
-      max-width: 760px;
-      margin: 0 auto;
-    }
-
-    .topbar {
-      margin-bottom: 1.25rem;
-    }
-
-    .back-link {
-      display: inline-block;
-      color: #0F6E56;
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .product-card {
-      background: #fff;
-      border: 1px solid #e8e8e8;
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    }
-
-    .product-img {
-      background: #E1F5EE;
-      min-height: 320px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      padding: 1rem;
-    }
-
-    .product-img img {
-      width: 100%;
-      max-height: 380px;
-      object-fit: contain;
-      border-radius: 12px;
-    }
-
-    .product-img-placeholder {
-      text-align: center;
-      color: #0F6E56;
-    }
-
-    .product-img-placeholder div {
-      font-size: 72px;
-      line-height: 1;
-      margin-bottom: 0.5rem;
-    }
-
-    .product-img-placeholder p {
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .launch-badge {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      background: #D85A30;
-      color: #fff;
-      font-size: 12px;
-      font-weight: 700;
-      padding: 6px 14px;
-      border-radius: 999px;
-    }
-
-    .product-body {
-      padding: 1.75rem;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      background: #E1F5EE;
-      color: #0F6E56;
-      border-radius: 999px;
-      padding: 5px 12px;
-      font-size: 12px;
-      font-weight: 700;
-      margin-bottom: 0.9rem;
-    }
-
-    .product-name {
-      font-size: 32px;
-      line-height: 1.2;
-      font-weight: 700;
-      color: #1a1a1a;
-      margin-bottom: 0.75rem;
-    }
-
-    .product-desc {
-      font-size: 16px;
-      color: #555;
-      margin-bottom: 1.4rem;
-    }
-
-    .price-row {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 1.5rem;
-    }
-
-    .price-launch {
-      font-size: 38px;
-      font-weight: 800;
-      color: #0F6E56;
-    }
-
-    .price-normal {
-      font-size: 20px;
-      color: #999;
-      text-decoration: line-through;
-    }
-
-    .price-label {
-      font-size: 12px;
-      background: #E1F5EE;
-      color: #0F6E56;
-      padding: 5px 10px;
-      border-radius: 999px;
-      font-weight: 700;
-    }
-
-    .includes-box {
-      background: #f7f7f5;
-      border-radius: 14px;
-      padding: 1.2rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .includes-title {
-      font-size: 12px;
-      font-weight: 700;
-      color: #888;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 0.9rem;
-    }
-
-    .include-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      font-size: 15px;
-      color: #1a1a1a;
-      padding: 0.45rem 0;
-    }
-
-    .check {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: #E1F5EE;
-      color: #0F6E56;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      font-size: 13px;
-      font-weight: 700;
-      margin-top: 2px;
-    }
-
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-bottom: 1.5rem;
-    }
-
-    .info-card {
-      background: #f7f7f5;
-      border-radius: 14px;
-      padding: 1rem;
-      text-align: center;
-    }
-
-    .info-num {
-      color: #0F6E56;
-      font-size: 24px;
-      font-weight: 800;
-      line-height: 1.1;
-      margin-bottom: 0.3rem;
-    }
-
-    .info-label {
-      font-size: 13px;
-      color: #666;
-    }
-
-    .contact-section {
-      background: #f5f5f3;
-      border-radius: 14px;
-      padding: 1.4rem;
-      text-align: center;
-    }
-
-    .contact-title {
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 0.45rem;
-    }
-
-    .contact-sub {
-      font-size: 14px;
-      color: #666;
-      margin-bottom: 1rem;
-    }
-
-    .contact-btns {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .btn-wa, .btn-ig, .btn-back {
-      display: block;
-      border-radius: 12px;
-      padding: 14px 16px;
-      font-size: 15px;
-      font-weight: 700;
-      text-align: center;
-    }
-
-    .btn-wa {
-      background: #25D366;
-      color: #fff;
-    }
-
-    .btn-ig {
-      background: #fff;
-      color: #1a1a1a;
-      border: 1px solid #ddd;
-    }
-
-    .btn-back {
-      margin-top: 12px;
-      background: transparent;
-      color: #0F6E56;
-      border: 1px solid rgba(15,110,86,0.25);
-    }
-
-    .note {
-      font-size: 13px;
-      color: #777;
-      margin-top: 1rem;
-      text-align: center;
-    }
-
-    @media (max-width: 640px) {
-      .product-name { font-size: 26px; }
-      .price-launch { font-size: 32px; }
-      .info-grid { grid-template-columns: 1fr; }
-      .product-body { padding: 1.25rem; }
-      .product-img { min-height: 240px; }
-    }
-  </style>
+  <title>BioFlow971 | Nos produits</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="page">
-    <div class="container">
-      <div class="topbar">
-        <a href="index.html" class="back-link">← Retour à l'accueil</a>
-      </div>
-
-      <div class="product-card">
-        <div class="product-img">
-          <!-- Remplace ce bloc par une vraie image si besoin -->
-          <!-- Exemple : <img src="kit.jpg" alt="Kit Découverte BioFlow" /> -->
-          <div class="product-img-placeholder">
-            <div>🌿</div>
-            <p>Ajoute la photo de ton kit ici</p>
-          </div>
-          <div class="launch-badge">Offre lancement</div>
-        </div>
-
-        <div class="product-body">
-          <div class="eyebrow">BioFlow971</div>
-          <h1 class="product-name">Kit Découverte BioFlow</h1>
-          <p class="product-desc">
-            Votre tour hydroponique complète pour cultiver vos aromates et herbes fraîches chez vous.
-            Installation simple, résultats rapides. Idéal pour débuter sans aucune expérience.
-          </p>
-
-          <div class="price-row">
-            <span class="price-launch">350 €</span>
-            <span class="price-normal">380 €</span>
-            <span class="price-label">Prix lancement</span>
-          </div>
-
-          <div class="info-grid">
-            <div class="info-card">
-              <div class="info-num">60 cm²</div>
-              <div class="info-label">Espace nécessaire</div>
-            </div>
-            <div class="info-card">
-              <div class="info-num">30 j</div>
-              <div class="info-label">1ère récolte</div>
-            </div>
-            <div class="info-card">
-              <div class="info-num">0</div>
-              <div class="info-label">Terre requise</div>
-            </div>
-          </div>
-
-          <div class="includes-box">
-            <div class="includes-title">Le kit comprend</div>
-            <div class="include-item"><div class="check">✓</div><div>Tour hydroponique complète</div></div>
-            <div class="include-item"><div class="check">✓</div><div>Substrat et semences inclus</div></div>
-            <div class="include-item"><div class="check">✓</div><div>Guide de démarrage pas à pas</div></div>
-            <div class="include-item"><div class="check">✓</div><div>Support BioFlow inclus</div></div>
-          </div>
-
-          <div class="contact-section">
-            <div class="contact-title">Commandez votre kit</div>
-            <div class="contact-sub">Livraison en Guadeloupe. Stock limité pour le lancement.</div>
-            <div class="contact-btns">
-              <a href="https://wa.me/590690762218?text=Bonjour%2C%20je%20souhaite%20commander%20le%20kit%20BioFlow." class="btn-wa" target="_blank" rel="noopener noreferrer">📱 Commander via WhatsApp</a>
-              <a href="https://instagram.com/bioflow971" class="btn-ig" target="_blank" rel="noopener noreferrer">📸 Nous suivre sur Instagram</a>
-            </div>
-            <a href="index.html" class="btn-back">Retour à l'accueil</a>
-          </div>
-
-          <p class="note">Pense à remplacer la photo de démonstration par une vraie photo de ton kit avant publication.</p>
-        </div>
-      </div>
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand" aria-label="Accueil BioFlow">
+        <span class="brand-logo"><img src="logo.png" alt="Logo BioFlow" /></span>
+        <span class="brand-name">BioFlow971</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a class="active" href="produit.html">Nos produits</a></li>
+        <li><a href="apropos.html">À propos</a></li>
+        <li><a href="contact.html">Nous contacter</a></li>
+      </ul>
     </div>
-  </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1>Nos produits</h1>
+        <p>Découvrez notre Kit Découverte BioFlow, pensé pour produire localement des aromates et jeunes pousses toute l’année.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <article class="product-wrap product-shop-layout">
+          <div class="product-media photo-main">
+            <span class="badge">Offre lancement</span>
+            <div class="media-layout">
+              <div class="media-thumbs" aria-label="Miniatures du kit">
+                <button class="thumb-btn is-active" type="button" aria-label="Afficher la photo principale">
+                  <img src="logo.png" data-photo="kit-principal" alt="Miniature photo principale du kit" class="thumb-photo js-kit-photo" loading="lazy" />
+                </button>
+                <button class="thumb-btn" type="button" aria-label="Afficher la vue avant du kit">
+                  <img src="logo.png" data-photo="kit-1" alt="Miniature vue avant du kit BioFlow" class="thumb-photo js-kit-photo" loading="lazy" />
+                </button>
+                <button class="thumb-btn" type="button" aria-label="Afficher la vue latérale du kit">
+                  <img src="logo.png" data-photo="kit-2" alt="Miniature vue latérale du kit BioFlow" class="thumb-photo js-kit-photo" loading="lazy" />
+                </button>
+                <button class="thumb-btn" type="button" aria-label="Afficher le détail des plantations">
+                  <img src="logo.png" data-photo="kit-3" alt="Miniature détail des plantations du kit BioFlow" class="thumb-photo js-kit-photo" loading="lazy" />
+                </button>
+              </div>
+              <img src="logo.png" data-photo="kit-principal" alt="Kit Découverte BioFlow installé" class="product-photo js-kit-photo js-main-photo" />
+            </div>
+          </div>
+
+          <div class="product-body product-summary">
+            <h2>Kit Découverte BioFlow</h2>
+            <p class="section-intro">Une solution hydroponique compacte, élégante et simple à prendre en main pour cultiver chez soi en Guadeloupe.</p>
+
+            <p class="price">350 € <small>380 €</small></p>
+
+            <ul class="list">
+              <li>Tour hydroponique verticale complète.</li>
+              <li>Pompe, substrat et semences inclus.</li>
+              <li>Guide de démarrage pas à pas.</li>
+              <li>Accompagnement BioFlow après installation.</li>
+            </ul>
+
+            <div class="contact-box" style="margin-top: 1rem;">
+              <h3>Commander maintenant</h3>
+              <p>Livraison en Guadeloupe. Écrivez-nous pour réserver votre kit et planifier votre installation.</p>
+              <div class="cta-group">
+                <a class="btn btn-secondary" href="https://wa.me/590690762218?text=Bonjour%2C%20je%20souhaite%20commander%20le%20kit%20BioFlow." target="_blank" rel="noopener noreferrer">Commander sur WhatsApp</a>
+                <a class="btn" style="border:1px solid var(--line);" href="https://instagram.com/bioflow971" target="_blank" rel="noopener noreferrer">Instagram</a>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="container">
+        <h2>Pourquoi choisir ce kit&nbsp;?</h2>
+        <div class="grid-2">
+          <article class="feature-card">
+            <h3>Simple à utiliser</h3>
+            <p>Le kit est prêt à l’emploi avec un guide clair pour démarrer rapidement, même sans expérience.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Adapté au climat local</h3>
+            <p>Conçu pour favoriser une culture efficace en Guadeloupe, tout en limitant les contraintes d’entretien.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Gain de place</h3>
+            <p>Format vertical idéal pour balcon, terrasse ou petite cour, sans sacrifier la capacité de production.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Support BioFlow</h3>
+            <p>Vous bénéficiez d’un suivi pour la mise en route et les premiers cycles de culture.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>Ce que comprend le kit</h2>
+        <div class="kit-includes">
+          <div class="kit-item">Tour hydroponique verticale</div>
+          <div class="kit-item">Réservoir et système de circulation d’eau</div>
+          <div class="kit-item">Pompe adaptée au kit</div>
+          <div class="kit-item">Substrat de culture</div>
+          <div class="kit-item">Pack de semences de démarrage</div>
+          <div class="kit-item">Guide imprimé + conseils d’installation</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 BioFlow971 — Hydroponie locale en Guadeloupe.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function loadKitPhotos() {
+      const folders = ['images', 'image'];
+      const extensions = ['png', 'jpg', 'jpeg', 'webp'];
+
+      function tryPaths(img, paths, index) {
+        if (index >= paths.length) {
+          img.src = 'logo.png';
+          return;
+        }
+        const candidate = paths[index];
+        const probe = new Image();
+        probe.onload = function () {
+          img.src = candidate;
+        };
+        probe.onerror = function () {
+          tryPaths(img, paths, index + 1);
+        };
+        probe.src = candidate;
+      }
+
+      document.querySelectorAll('.js-kit-photo').forEach(function (img) {
+        const baseName = img.dataset.photo;
+        const candidates = [];
+        folders.forEach(function (folder) {
+          extensions.forEach(function (ext) {
+            candidates.push(folder + '/' + baseName + '.' + ext);
+          });
+        });
+        tryPaths(img, candidates, 0);
+      });
+
+      document.querySelectorAll('.thumb-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const mainPhoto = document.querySelector('.js-main-photo');
+          const thumbImage = btn.querySelector('img');
+          if (!mainPhoto || !thumbImage) return;
+          mainPhoto.src = thumbImage.src;
+          document.querySelectorAll('.thumb-btn').forEach(function (item) {
+            item.classList.remove('is-active');
+          });
+          btn.classList.add('is-active');
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
