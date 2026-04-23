@@ -140,7 +140,69 @@
     </div>
   </div>
 </div>
+<div class="section" id="faq">
+  <div class="section-title">Questions fréquentes</div>
+  <div class="section-sub">Tout ce que vous voulez savoir avant de vous lancer.</div>
+  <div class="faq-list">
 
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        C'est compliqué à installer ? <span class="faq-arrow">+</span>
+      </button>
+      <div class="faq-answer">
+        Non, pas du tout. L'installation est incluse dans le kit — je me déplace chez vous pour tout installer et vous expliquer le fonctionnement. Vous n'avez rien à faire, juste profiter de votre première récolte.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Combien de place ça prend ? <span class="faq-arrow">+</span>
+      </button>
+      <div class="faq-answer">
+        La tour est compacte et verticale — elle occupe seulement 60 cm² au sol, soit moins qu'une chaise. Elle se pose facilement sur un balcon, dans un salon ou une cuisine lumineuse.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Ça consomme beaucoup d'électricité ? <span class="faq-arrow">+</span>
+      </button>
+      <div class="faq-answer">
+        Non. La pompe consomme l'équivalent d'une ampoule LED, soit quelques euros par mois. En Guadeloupe, avec notre ensoleillement naturel, vous n'avez souvent même pas besoin d'éclairage artificiel supplémentaire.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Quelles plantes peut-on cultiver ? <span class="faq-arrow">+</span>
+      </button>
+      <div class="faq-answer">
+        Le Kit Découverte est parfait pour les aromates : basilic, menthe, persil, ciboulette, thym... Des herbes que vous achetez chaque semaine et que vous pourrez désormais cueillir directement chez vous, fraîches et sans pesticides.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Vous livrez en Guadeloupe ? <span class="faq-arrow">+</span>
+      </button>
+      <div class="faq-answer">
+        Oui, je me déplace partout en Guadeloupe pour la livraison et l'installation. Contactez-moi sur WhatsApp pour convenir d'un créneau selon votre secteur.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Et si j'ai des questions après l'installation ? <span class="faq-arrow">+</span>
+      </button>
+      <div class="faq-answer">
+        Le support BioFlow est inclus. Vous pouvez me contacter à tout moment par WhatsApp ou Instagram. Je vous accompagne de la première plantation jusqu'à la première récolte.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="divider"></div>
 <div class="divider"></div>
 
 <div class="section" id="contact">
@@ -201,6 +263,13 @@
   <p>Systèmes hydroponiques & aquaponiques éco-responsables</p>
   <p>Guadeloupe 🇬🇵</p>
 </div>
-
+<script>
+  function toggleFaq(btn) {
+    const item = btn.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+</script>
 </body>
 </html>
