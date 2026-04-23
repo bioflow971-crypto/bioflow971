@@ -21,7 +21,6 @@
       </ul>
     </div>
   </header>
-
   <main>
     <section class="page-hero">
       <div class="container">
@@ -33,23 +32,37 @@
     <section class="section">
       <div class="container">
         <article class="product-wrap">
-          <div class="product-media">
-            <div>
-              <div style="font-size: 4rem; line-height: 1;">🌿</div>
-              <p>Ajoutez ici la photo du kit final</p>
-            </div>
+          <div class="product-media photo-main">
+            <img src="logo.png" data-photo="kit-principal" alt="Kit Découverte BioFlow installé" class="product-photo js-kit-photo" />
             <span class="badge">Offre lancement</span>
           </div>
+
           <div class="product-body">
             <h2>Kit Découverte BioFlow</h2>
             <p class="section-intro">Une tour hydroponique compacte pour faire pousser des aromates et légumes feuilles toute l'année.</p>
             <p class="price">350 € <small>380 €</small></p>
+
             <ul class="list">
               <li>Tour hydroponique complète.</li>
               <li>Substrat et semences inclus.</li>
               <li>Guide de démarrage pas à pas.</li>
               <li>Support BioFlow après installation.</li>
             </ul>
+
+            <h3 class="gallery-title">Photos du kit</h3>
+            <p class="gallery-sub">Photos réelles du kit BioFlow en situation chez nos clients et sur nos installations.</p>
+
+            <div class="gallery-grid">
+              <figure class="gallery-item">
+                <img src="logo.png" data-photo="kit-1" alt="Vue avant du kit BioFlow" loading="lazy" class="js-kit-photo" />
+              </figure>
+              <figure class="gallery-item">
+                <img src="logo.png" data-photo="kit-2" alt="Vue latérale du kit BioFlow" loading="lazy" class="js-kit-photo" />
+              </figure>
+              <figure class="gallery-item">
+                <img src="logo.png" data-photo="kit-3" alt="Détail des plantations du kit BioFlow" loading="lazy" class="js-kit-photo" />
+              </figure>
+            </div>
 
             <div class="contact-box" style="margin-top: 1rem;">
               <h3>Commander maintenant</h3>
@@ -70,5 +83,39 @@
       <p>© 2026 BioFlow971 — Hydroponie locale en Guadeloupe.</p>
     </div>
   </footer>
+
+  <script>
+    (function loadKitPhotos() {
+      const folders = ['images', 'image'];
+      const extensions = ['png', 'jpg', 'jpeg', 'webp'];
+
+      function tryPaths(img, paths, index) {
+        if (index >= paths.length) {
+          img.src = 'logo.png';
+          return;
+        }
+        const candidate = paths[index];
+        const probe = new Image();
+        probe.onload = function () {
+          img.src = candidate;
+        };
+        probe.onerror = function () {
+          tryPaths(img, paths, index + 1);
+        };
+        probe.src = candidate;
+      }
+
+      document.querySelectorAll('.js-kit-photo').forEach(function (img) {
+        const baseName = img.dataset.photo;
+        const candidates = [];
+        folders.forEach(function (folder) {
+          extensions.forEach(function (ext) {
+            candidates.push(folder + '/' + baseName + '.' + ext);
+          });
+        });
+        tryPaths(img, candidates, 0);
+      });
+    })();
+  </script>
 </body>
 </html>
