@@ -33,7 +33,24 @@
       <div class="container">
         <article class="product-wrap">
           <div class="product-media photo-main">
-            <img src="logo.png" data-photo="kit-principal" alt="Kit Découverte BioFlow installé" class="product-photo js-kit-photo" />
+            <div class="media-layout">
+              <div class="media-thumbs" aria-label="Miniatures du kit">
+                <button class="thumb-btn is-active" type="button" data-target-photo="kit-principal" aria-label="Afficher la photo principale">
+                  <img src="logo.png" data-photo="kit-principal" alt="Miniature photo principale du kit" class="thumb-photo js-kit-photo" loading="lazy" />
+                </button>
+                <button class="thumb-btn" type="button" data-target-photo="kit-1" aria-label="Afficher la vue avant du kit">
+                  <img src="logo.png" data-photo="kit-1" alt="Miniature vue avant du kit BioFlow" class="thumb-photo js-kit-photo" loading="lazy" />
+                </button>
+                <button class="thumb-btn" type="button" data-target-photo="kit-2" aria-label="Afficher la vue latérale du kit">
+                  <img src="logo.png" data-photo="kit-2" alt="Miniature vue latérale du kit BioFlow" class="thumb-photo js-kit-photo" loading="lazy" />
+                </button>
+                <button class="thumb-btn" type="button" data-target-photo="kit-3" aria-label="Afficher le détail des plantations">
+                  <img src="logo.png" data-photo="kit-3" alt="Miniature détail des plantations du kit BioFlow" class="thumb-photo js-kit-photo" loading="lazy" />
+                </button>
+              </div>
+
+              <img src="logo.png" data-photo="kit-principal" alt="Kit Découverte BioFlow installé" class="product-photo js-kit-photo js-main-photo" />
+            </div>
             <span class="badge">Offre lancement</span>
           </div>
 
@@ -48,21 +65,6 @@
               <li>Guide de démarrage pas à pas.</li>
               <li>Support BioFlow après installation.</li>
             </ul>
-
-            <h3 class="gallery-title">Photos du kit</h3>
-            <p class="gallery-sub">Photos réelles du kit BioFlow en situation chez nos clients et sur nos installations.</p>
-
-            <div class="gallery-grid">
-              <figure class="gallery-item">
-                <img src="logo.png" data-photo="kit-1" alt="Vue avant du kit BioFlow" loading="lazy" class="js-kit-photo" />
-              </figure>
-              <figure class="gallery-item">
-                <img src="logo.png" data-photo="kit-2" alt="Vue latérale du kit BioFlow" loading="lazy" class="js-kit-photo" />
-              </figure>
-              <figure class="gallery-item">
-                <img src="logo.png" data-photo="kit-3" alt="Détail des plantations du kit BioFlow" loading="lazy" class="js-kit-photo" />
-              </figure>
-            </div>
 
             <div class="contact-box" style="margin-top: 1rem;">
               <h3>Commander maintenant</h3>
@@ -114,6 +116,19 @@
           });
         });
         tryPaths(img, candidates, 0);
+      });
+
+      document.querySelectorAll('.thumb-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const mainPhoto = document.querySelector('.js-main-photo');
+          const thumbImage = btn.querySelector('img');
+          if (!mainPhoto || !thumbImage) return;
+          mainPhoto.src = thumbImage.src;
+          document.querySelectorAll('.thumb-btn').forEach(function (item) {
+            item.classList.remove('is-active');
+          });
+          btn.classList.add('is-active');
+        });
       });
     })();
   </script>
