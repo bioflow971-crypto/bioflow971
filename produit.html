@@ -36,16 +36,16 @@
             <span class="badge">Offre lancement</span>
             <div class="media-layout">
               <div class="media-thumbs" aria-label="Miniatures du kit">
-                <button class="thumb-btn is-active" type="button" aria-label="Afficher la photo principale">
+                <button class="thumb-btn is-active" type="button" data-target-photo="kit-principal" aria-label="Afficher la photo principale">
                   <img src="logo.png" data-photo="kit-principal" alt="Miniature photo principale du kit" class="thumb-photo js-kit-photo" loading="lazy" />
                 </button>
-                <button class="thumb-btn" type="button" aria-label="Afficher la vue avant du kit">
+                <button class="thumb-btn" type="button" data-target-photo="kit-1" aria-label="Afficher la vue avant du kit">
                   <img src="logo.png" data-photo="kit-1" alt="Miniature vue avant du kit BioFlow" class="thumb-photo js-kit-photo" loading="lazy" />
                 </button>
-                <button class="thumb-btn" type="button" aria-label="Afficher la vue latérale du kit">
+                <button class="thumb-btn" type="button" data-target-photo="kit-2" aria-label="Afficher la vue latérale du kit">
                   <img src="logo.png" data-photo="kit-2" alt="Miniature vue latérale du kit BioFlow" class="thumb-photo js-kit-photo" loading="lazy" />
                 </button>
-                <button class="thumb-btn" type="button" aria-label="Afficher le détail des plantations">
+                <button class="thumb-btn" type="button" data-target-photo="kit-3" aria-label="Afficher le détail des plantations">
                   <img src="logo.png" data-photo="kit-3" alt="Miniature détail des plantations du kit BioFlow" class="thumb-photo js-kit-photo" loading="lazy" />
                 </button>
               </div>
@@ -56,6 +56,7 @@
           <div class="product-body product-summary">
             <h2>Kit Découverte BioFlow</h2>
             <p class="section-intro">Une solution hydroponique compacte, élégante et simple à prendre en main pour cultiver chez soi en Guadeloupe.</p>
+            <p class="gallery-sub">Disponibilité : <strong>en stock</strong> • Livraison locale rapide • Support d’installation inclus.</p>
 
             <p class="price">350 € <small>380 €</small></p>
 
@@ -117,7 +118,6 @@
       </div>
     </section>
   </main>
-  </main>
 
   <footer class="site-footer">
     <div class="container">
@@ -160,8 +160,12 @@
       document.querySelectorAll('.thumb-btn').forEach(function (btn) {
         btn.addEventListener('click', function () {
           const mainPhoto = document.querySelector('.js-main-photo');
+          const targetName = btn.dataset.targetPhoto;
           const thumbImage = btn.querySelector('img');
           if (!mainPhoto || !thumbImage) return;
+          if (targetName) {
+            mainPhoto.dataset.photo = targetName;
+          }
           mainPhoto.src = thumbImage.src;
           document.querySelectorAll('.thumb-btn').forEach(function (item) {
             item.classList.remove('is-active');
