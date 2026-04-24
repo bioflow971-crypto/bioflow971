@@ -394,3 +394,9 @@ a { color: inherit; text-decoration: none; }
   .product-photo { min-height: 260px; max-height: 340px; }
   .kit-includes { grid-template-columns: 1fr; }
 }
+@media (min-width: 761px) {
+  .product-wrap.product-shop-layout {
+    display: grid !important;
+    grid-template-columns: minmax(320px, 46%) 1fr !important;
+  }
+}
