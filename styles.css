@@ -303,10 +303,11 @@ a { color: inherit; text-decoration: none; }
 
 .product-photo {
   width: 100%;
-  max-width: 360px;   /* ↓ diminue cette valeur */
-  margin: 0 auto;     /* centre l’image */
-  height: auto;
+  max-width: 380px;
+  aspect-ratio: 4 / 5;
+  margin: 0 auto;
   object-fit: contain;
+  object-position: center;
   display: block;
 }
 .gallery-title {
