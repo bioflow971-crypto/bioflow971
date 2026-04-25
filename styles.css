@@ -333,6 +333,7 @@ a { color: inherit; text-decoration: none; }
   border: 1px solid var(--line);
   border-radius: 14px;
   padding: 1rem;
+  margin-top: 1.2rem;
 }
 
 .cta-group {
@@ -401,4 +402,11 @@ a { color: inherit; text-decoration: none; }
   .thumb-btn { width: 64px; height: 64px; flex: 0 0 auto; }
   .product-photo { min-height: 260px; max-height: 340px; }
   .kit-includes { grid-template-columns: 1fr; }
+}
+
+@media (min-width: 901px) {
+  .product-wrap,
+  .product-shop-layout {
+    display: flex;
+  }
 }
